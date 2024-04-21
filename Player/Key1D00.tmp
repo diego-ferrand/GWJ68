@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpay1m1pn7h"]
+
+[ext_resource type="Script" path="res://Player/KeyEvent.gd" id="1_umppj"]
+
+[node name="key_event" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_umppj")
+
+[node name="SequenceContainer" type="Control" parent="."]
+anchors_preset = 0

@@ -1,0 +1,240 @@
+[gd_scene load_steps=31 format=3 uid="uid://ivx0v8gmjype"]
+
+[ext_resource type="Script" path="res://Scenes/World.gd" id="1_21srx"]
+[ext_resource type="PackedScene" uid="uid://m7eeyl47xs1s" path="res://Player/Player.tscn" id="1_230dn"]
+[ext_resource type="Script" path="res://Scenes/Camera3D.gd" id="1_b35k8"]
+[ext_resource type="PackedScene" uid="uid://u1acyawskhvg" path="res://Assets/Environment/Grass_Texture.tscn" id="3_on5gp"]
+[ext_resource type="PackedScene" uid="uid://c5abrnu6cgg7v" path="res://Assets/Environment/platform1tall.tscn" id="4_gttkt"]
+[ext_resource type="PackedScene" uid="uid://dd81xce02alw2" path="res://Assets/Environment/platform1.tscn" id="5_unigi"]
+[ext_resource type="PackedScene" uid="uid://bacivvfjp71fb" path="res://Assets/Environment/platform2.tscn" id="6_ma5g2"]
+[ext_resource type="PackedScene" uid="uid://4nhcwgsb6vi5" path="res://Assets/Environment/platform2tall.tscn" id="7_5potx"]
+[ext_resource type="PackedScene" uid="uid://u7ydcpbgg6k0" path="res://Assets/Environment/platform3.tscn" id="8_rbw23"]
+[ext_resource type="Script" path="res://Scenes/clouds.gd" id="9_5o81q"]
+[ext_resource type="PackedScene" uid="uid://hkxlsgh5uvjr" path="res://Assets/Environment/platform3tall.tscn" id="9_y2stl"]
+[ext_resource type="Texture2D" uid="uid://1cffdhnysmpv" path="res://Imports/Environment/uploads_files_4381654_LightBlueSky_texture.jpg" id="10_agccn"]
+[ext_resource type="Texture2D" uid="uid://djsojuk50pui4" path="res://Imports/Environment/Layer 5.png" id="12_k5a35"]
+[ext_resource type="Texture2D" uid="uid://c8lxxrg2afnmx" path="res://Imports/Environment/Layer 1.png" id="12_q0vn6"]
+[ext_resource type="Texture2D" uid="uid://cee2b1mpy4bi3" path="res://Imports/Environment/Layer 3.png" id="13_2wlyg"]
+[ext_resource type="Texture2D" uid="uid://cbsu5j46y4op2" path="res://Imports/Environment/Layer 2.png" id="14_kd1jn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3m01"]
+albedo_color = Color(0.054902, 0.458824, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2mvth"]
+material = SubResource("StandardMaterial3D_n3m01")
+size = Vector2(100, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vnke"]
+transparency = 1
+albedo_texture = ExtResource("12_q0vn6")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_offset = Vector3(0, 0.2, 0)
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ikkrx"]
+material = SubResource("StandardMaterial3D_7vnke")
+size = Vector2(2000, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njc5i"]
+transparency = 1
+albedo_texture = ExtResource("14_kd1jn")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_offset = Vector3(0, 0.25, 0)
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_htldm"]
+material = SubResource("StandardMaterial3D_njc5i")
+size = Vector2(2000, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kvvl"]
+transparency = 1
+albedo_texture = ExtResource("13_2wlyg")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_offset = Vector3(0, 0.2, 0)
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_51340"]
+material = SubResource("StandardMaterial3D_4kvvl")
+size = Vector2(2000, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkk2f"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("12_k5a35")
+uv1_scale = Vector3(0.015, 0.015, 0.015)
+uv1_offset = Vector3(0, 0.825, 0)
+uv1_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_an2pp"]
+size = Vector2(2000, 33.49)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tar2d"]
+albedo_color = Color(0.345098, 0.2, 0, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_284bl"]
+panorama = ExtResource("10_agccn")
+
+[sub_resource type="Sky" id="Sky_ahw45"]
+sky_material = SubResource("PanoramaSkyMaterial_284bl")
+
+[sub_resource type="Environment" id="Environment_qxi3b"]
+background_mode = 2
+sky = SubResource("Sky_ahw45")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_21srx")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.4348, 2, -2)
+doppler_tracking = 2
+script = ExtResource("1_b35k8")
+target = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_230dn")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8073, -0.0509416, 0.587938, -0.590141, -0.0696871, 0.804287, 2.37565e-10, -0.996267, -0.0863211, -0.310001, 4.25135, -0.118141)
+
+[node name="Foreground1" type="Node3D" parent="."]
+
+[node name="Grass_Texture7" parent="Foreground1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.593074, -0.541688, 2.0997)
+
+[node name="Grass_Texture8" parent="Foreground1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.541414, -0.541688, -1.89997)
+
+[node name="Grass_Texture9" parent="Foreground1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.554329, -0.541688, -0.90005)
+
+[node name="Grass_Texture10" parent="Foreground1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.515584, -0.541688, -3.8998)
+
+[node name="Grass_Texture11" parent="Foreground1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.528499, -0.541688, -2.89988)
+
+[node name="Spawns" type="Node3D" parent="."]
+
+[node name="Spawn1" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00792, 0)
+
+[node name="Spawn3" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00792, 23.0586)
+
+[node name="Spawn2" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00792, 29.2071)
+
+[node name="Spawn4" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.312733, 1.78079, -18.891)
+
+[node name="Spawn5" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00792, -29.1469)
+
+[node name="Background_1" type="Node3D" parent="."]
+
+[node name="groups" type="Node3D" parent="Background_1"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background_1/groups"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.56638, -3.61329, 0)
+mesh = SubResource("QuadMesh_2mvth")
+skeleton = NodePath("../../..")
+
+[node name="Near1" type="MeshInstance3D" parent="Background_1/groups"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.97, 0, 0)
+mesh = SubResource("QuadMesh_ikkrx")
+skeleton = NodePath("../../..")
+
+[node name="Near2" type="MeshInstance3D" parent="Background_1/groups"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.855, 0.500506, 0.375)
+mesh = SubResource("QuadMesh_htldm")
+skeleton = NodePath("../..")
+
+[node name="Near3" type="MeshInstance3D" parent="Background_1/groups"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26.269, 1.16565, 0)
+mesh = SubResource("QuadMesh_51340")
+skeleton = NodePath("../..")
+
+[node name="Near4" type="MeshInstance3D" parent="Background_1/groups"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.7913, 18.8084, 0)
+material_override = SubResource("StandardMaterial3D_xkk2f")
+mesh = SubResource("QuadMesh_an2pp")
+skeleton = NodePath("../..")
+script = ExtResource("9_5o81q")
+
+[node name="Grass_Texture" parent="Background_1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, -0.5, 0)
+
+[node name="Grass_Texture2" parent="Background_1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, -0.5, 1)
+
+[node name="Grass_Texture3" parent="Background_1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, -0.5, -3)
+
+[node name="Grass_Texture4" parent="Background_1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, -0.5, -2)
+
+[node name="Grass_Texture5" parent="Background_1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, -0.5, -5)
+
+[node name="Grass_Texture6" parent="Background_1" instance=ExtResource("3_on5gp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, -0.5, -4)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="platform3" parent="Level" instance=ExtResource("6_ma5g2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319694, 3.19294, 10.9169)
+
+[node name="platform2tall" parent="Level" instance=ExtResource("7_5potx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.499999, -0.598419, 9.11321)
+
+[node name="platform2tall2" parent="Level" instance=ExtResource("7_5potx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.499999, -0.598419, 14.8624)
+
+[node name="platform5" parent="Level" instance=ExtResource("6_ma5g2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319694, 3.19294, 12.8837)
+
+[node name="platform4" parent="Level" instance=ExtResource("8_rbw23")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.258286, 2.3725, 6.01128)
+
+[node name="platform3tall" parent="Level" instance=ExtResource("9_y2stl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0240374, 0.571679, 4.26493)
+
+[node name="platform1tall" parent="Level" instance=ExtResource("4_gttkt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.146369, 0.360633, -12)
+collision_mask = 2
+
+[node name="platform2" parent="Level" instance=ExtResource("5_unigi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.301992, 3.29347, -0.443755)
+
+[node name="platform1" parent="Level" instance=ExtResource("5_unigi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.21315, -10.1406)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_tar2d")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1, 1, 67.8867)
+
+[node name="platform6" parent="Level" instance=ExtResource("6_ma5g2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319694, 3.19294, 18.8244)
+
+[node name="platform2tall3" parent="Level" instance=ExtResource("7_5potx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.499999, -0.598419, 17.0208)
+
+[node name="platform2tall4" parent="Level" instance=ExtResource("7_5potx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.499999, -0.598419, 22.7699)
+
+[node name="platform7" parent="Level" instance=ExtResource("6_ma5g2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.319694, 3.19294, 20.7912)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qxi3b")
+
+[node name="Enemy" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

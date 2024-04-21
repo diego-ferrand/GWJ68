@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsh8g83mbs1hm"]
+
+[ext_resource type="Texture2D" uid="uid://bir8gt6shijoc" path="res://Imports/Button_Down_pink.png" id="1_h1s2b"]
+
+[node name="Node2D" type="TextureRect"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_h1s2b")
